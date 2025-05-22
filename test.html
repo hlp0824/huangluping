@@ -1,0 +1,508 @@
+<html style="font-size: 53.3333px;"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <link rel="stylesheet" href="src/css/layermobile.css" media="all">
+    <title>门店详情</title>
+    <style>
+      a,
+      abbr,
+      acronym,
+      address,
+      applet,
+      article,
+      aside,
+      audio,
+      b,
+      big,
+      blockquote,
+      body,
+      canvas,
+      caption,
+      center,
+      cite,
+      code,
+      dd,
+      del,
+      details,
+      dfn,
+      div,
+      dl,
+      dt,
+      em,
+      embed,
+      fieldset,
+      figcaption,
+      figure,
+      footer,
+      form,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      header,
+      hgroup,
+      html,
+      i,
+      iframe,
+      img,
+      ins,
+      kbd,
+      label,
+      legend,
+      li,
+      mark,
+      menu,
+      nav,
+      object,
+      ol,
+      output,
+      p,
+      pre,
+      q,
+      ruby,
+      s,
+      samp,
+      section,
+      small,
+      span,
+      strike,
+      strong,
+      sub,
+      summary,
+      sup,
+      table,
+      tbody,
+      td,
+      tfoot,
+      th,
+      thead,
+      time,
+      tr,
+      tt,
+      u,
+      ul,
+      var,
+      video {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        vertical-align: baseline;
+        font: inherit;
+        font-size: 100%;
+      }
+      a {
+        text-decoration: none;
+      }
+      .container {
+        background: #88c4e5; /*height: 100vh;*/
+      }
+      .v-h {
+        padding: 0.3rem;
+      }
+      .top {
+        font-size: 0.32rem;
+        padding: 0.32rem;
+        background: #fff; /*height: 90vh;*/
+      }
+
+      .logo {
+        text-align: center;
+      }
+      .logo img {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+      /* 门店名称div */
+      .branchName-div {
+        margin-top: 0.18rem;
+      }
+      /* 机构跳转链接 */
+      .agency-href {
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .branchName,.branchName-span {
+        font-size: 0.38rem;
+        font-family: "Microsoft YaHei";
+        color: #000;
+        font-weight: bold;
+        line-height: 0.44rem;
+        text-align: center;
+        margin-top: 0.1rem;
+      }
+      .branchName-span{font-size: 0.36rem;color:#03a9f4;}
+
+      .branchAddress, .branchAddress-span{
+        margin-top: 0.1rem;
+        font-size: 0.28rem;
+        font-family: "Microsoft YaHei";
+        color: #000;
+        text-align: center;
+      }
+      .branchAddress-span{font-size:0.36rem;color:#03a9f4;font-weight: bold;}
+      .click-tips {
+        color: #ff0000;
+        margin-top: 0.1rem;
+        font-size: 0.28rem;
+      }
+      /* 机构信息 */
+      .agency-detail {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        color: #b6b6b6;
+        font-size: 0.28rem;
+        margin-top: 0.4rem;
+      }
+      .agency-detail div {
+        line-height: 0.44rem;
+      }
+      .credit-status > div:nth-child(1),
+      .md > div:nth-child(1),
+      .credit-level > div:nth-child(1) {
+        color: #ff0000;
+        font-weight: bold;
+        font-size: 0.26rem;
+      }
+      .credit-status > div:nth-child(2),
+      .md > div:nth-child(2),
+      .credit-level > div:nth-child(2) {
+        font-size: 0.28rem;
+      }
+      .credit-level > div:nth-child(1) {
+        color: #dfa26c;
+      }
+      /* 竖线 */
+      .line {
+        height: 0.6rem;
+        width: 0.02rem;
+        background: #b6b6b6;
+      }
+      /* 分割线 */
+      .split-line {
+        margin-left: 0.04rem;
+        width: 95%;
+        border: 0.01rem dashed #b6b6b6;
+        display: flex;
+        justify-content: center;
+        margin-top: 0.2rem;
+      }
+
+      /* 指引服务 */
+      .service {
+        margin-top: 0.2rem;
+      }
+      .service-guide-div {
+        display: flex;
+        align-content: center;
+        margin-bottom: 0.3rem;
+      }
+      .service-guide {
+        color: #03a9f4;
+        font-weight: bold;
+        font-size: 0.36rem;
+      }
+      .guide-tips {
+        font-size: 0.2rem;
+        color: #ff0000;
+        margin-top: 0.16rem;
+      }
+      .ser-title {
+        font-size: 0.24rem;
+        color: #333333;
+        font-weight: bold;
+        font-size: 0.26rem;
+      }
+      .ser-text {
+        font-size: 0.2rem;
+        color: #999999;
+        font-size: 0.24rem;
+      }
+      .ser-row {
+        margin-bottom: 0.2rem;
+        line-height: 0.44rem;
+      }
+      /* 查询模块 */
+      .search {
+        text-align: center;
+        margin-top: 10px;
+      }
+      .search-span {
+        display: none;
+        color: #607d8b;
+        font-size: 0.2rem;
+        font-weight: bold;
+      }
+
+      .search-input {
+        text-indent: 0.1rem;
+        height: 0.48rem;
+        line-height: 0.48rem;
+        border: 0.02rem solid #607d8b;
+        border-radius: 0.1rem;
+        width: 3.6rem;
+        font-size: 0.2rem;
+      }
+      .search-button {
+        background: #e5e5e5;
+        line-height: 0.32rem;
+        height: 0.44rem;
+        font-size: 0.24rem;
+        border: none;
+        border-radius: 0.12rem;
+        margin-left: 0.12rem;
+        color: #03a9f4;
+        font-weight: bold;
+      }
+    </style>
+  <link href="https://fdc.szjj.xm.gov.cn/AgencyQrCode/src/js/need/layer.css?2.0" type="text/css" rel="styleSheet" id="layermcss"></head>
+  <body>
+    <div class="container">
+      <div class="v-h">
+        <div class="top">
+          <div style="text-align: center;">
+            <div class="logo">
+              <img src="https://fdc.szjj.xm.gov.cn/AgencyQrCode/src/images/logo.png">
+            </div>
+            <div class="branchName-div">
+              <a class="agency-url" href="http://fdc.zfj.xm.gov.cn:8081/xygl/AgencyManage/AgencyDetail?agencyId=687" style="display: block;">
+                <div>
+                  <div class="branchName-span">门店名称：</div>
+                  <div class="branchName">厦门是侯卿租赁服务有限公司-后坑后社店</div>
+                </div>
+              </a>
+              <a class="" href="###" style="display: block;margin-top:0.1rem">
+                <div style="line-height: 0.4rem;">
+                  <div class="branchAddress-span">地址：</div>
+                  <div class="branchAddress">厦门市湖里区后坑221号01单元</div>
+                </div>
+              </a>
+              <a class="agency-href agency-url" href="http://fdc.zfj.xm.gov.cn:8081/xygl/AgencyManage/AgencyDetail?agencyId=687" style="display: block;"><div class="click-tips">（点击名称查看机构详情）</div>
+              </a>
+            </div>
+            <div class="agency-detail">
+              <div class="credit-status">
+                <div id="creditStatus">诚信</div>
+                <div>信用状态</div>
+              </div>
+              <div class="line"></div>
+              <div class="credit-level">
+                <div id="creditLevel">AAA</div>
+                <div>信用等级</div>
+              </div>
+              <div class="line"></div>
+              <div class="md">
+                <div id="Stars">⭐⭐⭐</div>
+                <div>门店星级</div>
+              </div>
+            </div>
+          </div>
+          <div class="split-line"></div>
+          <div class="search">
+            <span class="search-span">查询人员信息：</span>
+            <input class="search-input" type="text" placeholder="请输入从业主体名称或从业人员姓名" name="keyword">
+            <button class="search-button" onclick="Md.searchAll()">查询</button>
+          </div>
+          <div class="service">
+            <div class="service-guide-div">
+              <a class="notice-url" href="AgencyNotice/index.html" style="display: block;"><div class="service-guide">服务指引</div></a>
+              <a class="agency-href notice-url" href="AgencyNotice/index.html" style="display: block;">
+                <div class="guide-tips">（点击服务指引查看详情）</div>
+              </a>
+            </div>
+            <div class="ser-row">
+              <div class="ser-title">选中介，“诚信机构”和“实名登记”有保障</div>
+              <div class="ser-text">选择有网签资格的房地产中介机构。</div>
+            </div>
+            <div class="ser-row">
+              <div class="ser-title">怎么算实名登记？</div>
+              <div class="ser-text">门店现场有没有从业人员信息上墙公示。</div>
+            </div>
+            <div class="ser-row">
+              <div class="ser-title">消费者应尽义务：</div>
+              <div class="ser-text">尊重经纪劳动，按照合同约定支付报酬。</div>
+            </div>
+            <div class="ser-row">
+              <div class="ser-title">中介方应尽义务：</div>
+              <div class="ser-text">
+                应如实告知消费者服务进度情况以及与交易有关的事项。中介人员与房地产交易一方当事人存在利害关系的，应当如实告知另一方当事人。
+              </div>
+            </div>
+            <!-- <div class="ser-row">
+              <div class="ser-title">防范交易风险</div>
+              <div class="ser-text">
+                注意保障交易资金安全，购房款建议通过交易保证机构厦门住房置业担保融资担保有限公司进行资金监管。
+              </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+  <script src="src/js/jquery.min.js"></script>
+  <script src="src/js/layermobile.js"></script>
+  <script type="text/javascript" charset="utf-8">
+    $(function () {
+      var $AgencyId = GetQueryString("agencyId");
+      var $branchName = GetQueryString("branchName");
+      var $data = {
+        agencyid: $AgencyId,
+        brancH_NAME: $branchName,
+      };
+      $(".notice-url").attr("href", "AgencyNotice/index.html");
+
+      GetAgencyInfo($data,function(data){
+        $(".agency-url").attr(
+          "href",
+          "http://fdc.zfj.xm.gov.cn:8081/xygl/AgencyManage/AgencyDetail?agencyId=" +
+          data.agencyInfo.agencyid
+        );
+        
+      });
+
+      
+    });
+
+    // 获取机构信息
+    function GetAgencyInfo(data,fnCallback) {
+      if (nulltokong(GetQueryString("agencyId")) == "") {
+        ErrorTips();
+        return;
+      }
+      // var data = {
+      //   AGENCYID: agencyid,
+      //   brancH_NAME: branchName,
+      // };
+      $.ajax({
+        type: "POST",
+        data: JSON.stringify(data),
+        // url: "http://222.222.222.15:8088/api/Credit/GetAgencyInfo",
+        //url: "http://222.76.242.144:8001/api/Credit/GetAgencyInfo",
+        url: "https://fdc.szjj.xm.gov.cn:8001/api/Credit/GetAgencyInfo",
+        dataType: "json",
+        contentType: "application/json",
+        success: function (data) {
+          if (data.body) {
+            console.log(data);
+            var branchData = data.body.branchInfo;
+            var agencyData = data.body.agencyInfo;
+
+            $(".branchName").text(branchData.agencY_NAME);
+            $(".branchAddress").text(branchData.businesS_ADDRESS);
+            var startText = SetLevel(agencyData.xyfs);
+            $("#creditLevel").text(startText);
+            $("#creditStatus").text(agencyData.xyzt == 1 ? "诚信" : "预警");
+            var stars = Md.GetMdStars(branchData.brancH_CREDITRATING);
+            $("#Stars").html(stars);
+            fnCallback && fnCallback(data.body);
+          } else {
+            ErrorTips();
+            return;
+          }
+          
+        },
+        error: function (error) {
+          layer.open({
+            content: "您查询的数据不存在，请联系管理员",
+            skin: "msg",
+            time: 2, //2秒后自动关闭
+          });
+          return;
+        },
+      });
+    }
+    // 门店类
+    var Md = {
+      // 获取星星数
+      GetMdStars: function (score) {
+        if (score == 0 || !score) {
+          return "无";
+        } else {
+          return "⭐".repeat(score);
+        }
+      },
+      // 搜索
+      searchAll:function() {
+        var keyword = $("input[name='keyword']").val();
+        if (keyword == "" || keyword == undefined || !keyword) {
+          ErrorTips("关键字不能为空");
+          return;
+        }
+        var url =
+          "http://fdc.zfj.xm.gov.cn:8081/xygl/Search/SearchAll?agency_name=" +
+          keyword;
+        $("input[name='keyword']").val("");
+        window.open(url);
+      },
+    };
+
+    // 设置等级
+    function SetLevel(score) {
+      if (score == "" || score == null) {
+        return "暂无评定";
+      }
+      if (95 < score && score <= 100) {
+        return "AAAAA";
+      } else if (90 < score && score <= 95) {
+        return "AAAA";
+      } else if (80 < score && score <= 90) {
+        return "AAA";
+      } else if (70 < score && score <= 80) {
+        return "AA";
+      } else if (60 < score && score <= 70) {
+        return "A";
+      } else if (50 < score && score <= 60) {
+        return "B";
+      } else if (0 <= score && score <= 50) {
+        return "C";
+      }
+    }
+    // url获取id
+    function GetQueryString(name) {
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); // 匹配目标参数
+      var result = window.location.search.substr(1).match(reg); // 对querystring匹配目标参数
+      if (result != null) {
+        return decodeURIComponent(result[2]);
+      } else {
+        return null;
+      }
+    }
+    // 空判断
+    function nulltokong(str) {
+      if (str == null) return " ";
+      else return str;
+    }
+    // 错误提示
+    function ErrorTips(tips) {
+      layer.open({
+        content: tips || "您查询的数据不存在，请联系管理员",
+        skin: "msg",
+        time: 2, //2秒后自动关闭
+      });
+    }
+  </script>
+  <script>
+    (function (doc, win) {
+      var docEl = doc.documentElement,
+        resizeEvt =
+          "orientationchange" in window ? "orientationchange" : "resize",
+        recalc = function () {
+          var clientWidth = docEl.clientWidth;
+          if (!clientWidth) return;
+          docEl.style.fontSize = clientWidth / 7.5 + "px";
+        };
+      if (!doc.addEventListener) return;
+      win.addEventListener(resizeEvt, recalc, false);
+      doc.addEventListener("DOMContentLoaded", recalc, false);
+    })(document, window);
+  </script>
+
+</body></html>
